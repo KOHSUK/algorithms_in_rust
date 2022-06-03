@@ -12,5 +12,5 @@ use algorithms::*;
 
 
 fn main() {
-    alds1_6_a::run();
+    alds1_3_a::run();
 }
