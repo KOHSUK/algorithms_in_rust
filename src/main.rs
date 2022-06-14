@@ -1,16 +1,14 @@
+mod algorithms;
 #[allow(unused)]
-
 mod aoj;
 mod codeforces;
 mod leetcode;
-mod algorithms;
 
+use algorithms::*;
 use aoj::*;
 use codeforces::gym::*;
 use leetcode::*;
-use algorithms::*;
-
 
 fn main() {
-    alds1_3_a::run();
+    leetcode::design_hash_set::run();
 }
