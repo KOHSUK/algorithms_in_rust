@@ -21,7 +21,7 @@ pub fn run() {
 // the bucket size is up to 1000
 
 // a prime number greater than 1000
-const SIZE: usize = 1009;
+const SIZE: usize = 10007;
 
 struct MyHashSet {
     buckets: [Option<i32>; SIZE],
