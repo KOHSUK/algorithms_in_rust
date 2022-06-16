@@ -1,4 +1,5 @@
 pub mod _912;
+pub mod contains_duplicate;
 pub mod design_hash_map;
 pub mod design_hash_set;
 pub mod insertion_sort_list;

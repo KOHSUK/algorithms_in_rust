@@ -10,5 +10,5 @@ use codeforces::gym::*;
 use leetcode::*;
 
 fn main() {
-    leetcode::design_hash_map::run();
+    leetcode::contains_duplicate::run();
 }
