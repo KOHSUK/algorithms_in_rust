@@ -1,14 +1,12 @@
-mod algorithms;
-#[allow(unused)]
-mod aoj;
-mod codeforces;
+// mod algorithms;
+// mod aoj;
+// mod codeforces;
 mod leetcode;
 
-use algorithms::*;
-use aoj::*;
-use codeforces::gym::*;
-use leetcode::*;
+// use algorithms::*;
+// use aoj::*;
+// use codeforces::gym::*;
 
 fn main() {
-    leetcode::contains_duplicate::run();
+    leetcode::single_number::run();
 }
