@@ -8,5 +8,5 @@ mod leetcode;
 // use codeforces::gym::*;
 
 fn main() {
-    aoj::alds1_4_c::run();
+    leetcode::two_sum::main();
 }
