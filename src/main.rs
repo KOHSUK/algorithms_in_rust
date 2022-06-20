@@ -1,5 +1,5 @@
 // mod algorithms;
-// mod aoj;
+mod aoj;
 // mod codeforces;
 mod leetcode;
 
@@ -8,5 +8,5 @@ mod leetcode;
 // use codeforces::gym::*;
 
 fn main() {
-    leetcode::single_number::run();
+    aoj::alds1_4_c::run();
 }
