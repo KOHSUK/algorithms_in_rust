@@ -5,6 +5,7 @@ pub mod design_hash_set;
 pub mod happy_number;
 pub mod insertion_sort_list;
 pub mod intersection_of_two_arrays;
+pub mod isomorphic_strings;
 pub mod merge_sorted_array;
 pub mod merge_two_sorted_lists;
 pub mod single_number;

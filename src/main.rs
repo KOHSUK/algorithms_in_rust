@@ -8,5 +8,5 @@ mod leetcode;
 // use codeforces::gym::*;
 
 fn main() {
-    leetcode::two_sum::main();
+    leetcode::isomorphic_strings::run();
 }
