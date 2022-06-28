@@ -8,5 +8,5 @@ mod leetcode;
 // use codeforces::gym::*;
 
 fn main() {
-    leetcode::isomorphic_strings::run();
+    leetcode::minimum_index_sum_of_two_lists::run();
 }

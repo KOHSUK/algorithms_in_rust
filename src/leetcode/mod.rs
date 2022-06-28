@@ -8,5 +8,6 @@ pub mod intersection_of_two_arrays;
 pub mod isomorphic_strings;
 pub mod merge_sorted_array;
 pub mod merge_two_sorted_lists;
+pub mod minimum_index_sum_of_two_lists;
 pub mod single_number;
 pub mod two_sum;
