@@ -8,5 +8,5 @@ mod leetcode;
 // use codeforces::gym::*;
 
 fn main() {
-    leetcode::minimum_index_sum_of_two_lists::run();
+    leetcode::intersection_of_two_arrays_ii::run();
 }
