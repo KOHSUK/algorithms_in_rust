@@ -8,5 +8,5 @@ mod leetcode;
 // use codeforces::gym::*;
 
 fn main() {
-    leetcode::intersection_of_two_arrays_ii::run();
+    leetcode::group_anagrams::run();
 }

@@ -1,8 +1,10 @@
 pub mod _912;
 pub mod contains_duplicate;
+pub mod contains_duplicate_ii;
 pub mod design_hash_map;
 pub mod design_hash_set;
 pub mod first_unique_character_in_a_string;
+pub mod group_anagrams;
 pub mod happy_number;
 pub mod insertion_sort_list;
 pub mod intersection_of_two_arrays;
