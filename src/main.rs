@@ -8,5 +8,5 @@ mod leetcode;
 // use codeforces::gym::*;
 
 fn main() {
-    leetcode::group_anagrams::run();
+    leetcode::valid_sudoku::run();
 }
