@@ -1,6 +1,6 @@
-// mod algorithms;
+mod algorithms;
 mod aoj;
-// mod codeforces;
+mod codeforces;
 mod leetcode;
 
 // use algorithms::*;
@@ -8,5 +8,5 @@ mod leetcode;
 // use codeforces::gym::*;
 
 fn main() {
-    leetcode::top_k_frequent_elements::run();
+    algorithms::max_heap::run();
 }

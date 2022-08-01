@@ -8,3 +8,5 @@ pub mod alds1_5_b;
 pub mod alds1_6_a;
 pub mod alds1_6_c;
 pub mod alds1_6_c_solution;
+pub mod alds1_9_b;
+pub mod alds1_9_c;

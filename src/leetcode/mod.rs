@@ -8,6 +8,7 @@ pub mod first_unique_character_in_a_string;
 pub mod four_sum_ii;
 pub mod group_anagrams;
 pub mod happy_number;
+pub mod insert_delete_get_random;
 pub mod insertion_sort_list;
 pub mod intersection_of_two_arrays;
 pub mod intersection_of_two_arrays_ii;
