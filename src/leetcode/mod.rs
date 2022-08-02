@@ -1,5 +1,6 @@
 pub mod _912;
 pub mod binary_tree_postorder_traversal;
+pub mod binary_tree_preorder_traversal;
 pub mod contains_duplicate;
 pub mod contains_duplicate_ii;
 pub mod design_hash_map;

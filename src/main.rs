@@ -8,5 +8,5 @@ mod leetcode;
 // use codeforces::gym::*;
 
 fn main() {
-    leetcode::binary_tree_postorder_traversal::run();
+    leetcode::binary_tree_preorder_traversal::run();
 }
