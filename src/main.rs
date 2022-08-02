@@ -8,5 +8,5 @@ mod leetcode;
 // use codeforces::gym::*;
 
 fn main() {
-    algorithms::max_heap::run();
+    leetcode::binary_tree_postorder_traversal::run();
 }
