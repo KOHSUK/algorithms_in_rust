@@ -8,5 +8,5 @@ mod leetcode;
 // use codeforces::gym::*;
 
 fn main() {
-    leetcode::binary_tree_level_order_traversal::run();
+    leetcode::symmetric_tree::run();
 }
