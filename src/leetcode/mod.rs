@@ -1,3 +1,5 @@
+pub mod modules;
+
 pub mod _912;
 pub mod binary_tree_inorder_traversal;
 pub mod binary_tree_level_order_traversal;
@@ -23,6 +25,7 @@ pub mod maximum_depth_of_binary_tree;
 pub mod merge_sorted_array;
 pub mod merge_two_sorted_lists;
 pub mod minimum_index_sum_of_two_lists;
+pub mod path_sum;
 pub mod single_number;
 pub mod symmetric_tree;
 pub mod top_k_frequent_elements;
