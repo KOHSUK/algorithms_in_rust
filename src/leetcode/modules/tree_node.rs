@@ -54,19 +54,21 @@ impl TreeNode {
 
 impl fmt::Display for TreeNode {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        f.write_str(&format!(
-            "{}",
-            self.traverse()
+        f.write_str(
+            &self
+                .traverse()
                 .iter()
-                .map(|l| format!(
-                    "{:?}",
-                    l.iter()
-                        .map(|v| v.map(|x| x.to_string()).unwrap_or(" ".to_string()))
-                        .collect::<Vec<String>>()
-                ))
+                .map(|l| {
+                    format!(
+                        "{:?}",
+                        l.iter()
+                            .map(|v| v.map(|x| x.to_string()).unwrap_or(" ".to_string()))
+                            .collect::<Vec<String>>()
+                    )
+                })
                 .collect::<Vec<String>>()
-                .join("\n")
-        ))
+                .join("\n"),
+        )
     }
 }
 
@@ -144,5 +146,27 @@ impl TryFrom<Vec<&str>> for TreeNode {
         let root = root.borrow();
         let root = root.clone();
         Ok(root)
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use super::TreeNode;
+
+    #[test]
+    fn test() {
+        let root = TreeNode::try_from(vec![
+            "5", "4", "8", "11", "null", "13", "4", "7", "2", "null", "null", "null", "1",
+        ])
+        .unwrap();
+    }
+
+    #[test]
+    #[should_panic]
+    fn test_invalid_array() {
+        let root = TreeNode::try_from(vec![
+            "5", "4", "8", "11", "null", "13", "4", "7", "2", "null", "null", "null", "1",
+        ])
+        .unwrap();
     }
 }
