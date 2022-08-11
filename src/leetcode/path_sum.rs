@@ -33,10 +33,7 @@ impl Solution {
 }
 
 pub fn run() {
-    let root = TreeNode::try_from(vec![
-        "5", "4", "8", "11", "null", "13", "4", "7", "2", "null", "null", "null", "1",
-    ])
-    .unwrap();
+    let root = TreeNode::try_from("[5,4,8,11,null,13,4,7,2,null,null,null,1]").unwrap();
     let root = Some(Rc::new(RefCell::new(root)));
     let target_sum = 22;
 

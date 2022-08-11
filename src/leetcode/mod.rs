@@ -5,6 +5,7 @@ pub mod binary_tree_inorder_traversal;
 pub mod binary_tree_level_order_traversal;
 pub mod binary_tree_postorder_traversal;
 pub mod binary_tree_preorder_traversal;
+pub mod construct_binary_tree_from_inorder_and_postorder_traversal;
 pub mod contains_duplicate;
 pub mod contains_duplicate_ii;
 pub mod design_hash_map;

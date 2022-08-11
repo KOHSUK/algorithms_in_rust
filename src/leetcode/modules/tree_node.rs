@@ -60,14 +60,17 @@ impl fmt::Display for TreeNode {
                 .iter()
                 .map(|l| {
                     format!(
-                        "{:?}",
+                        "{}",
                         l.iter()
-                            .map(|v| v.map(|x| x.to_string()).unwrap_or(" ".to_string()))
+                            .map(|v| v
+                                .map(|x| x.to_string())
+                                .unwrap_or_else(|| "null".to_string()))
                             .collect::<Vec<String>>()
+                            .join(", ")
                     )
                 })
                 .collect::<Vec<String>>()
-                .join("\n"),
+                .join(", "),
         )
     }
 }
@@ -100,13 +103,19 @@ impl Error for TreeNodeError {
     }
 }
 
-impl TryFrom<Vec<&str>> for TreeNode {
+impl TryFrom<&str> for TreeNode {
     type Error = Box<dyn Error>;
 
-    fn try_from(value: Vec<&str>) -> Result<Self, Self::Error> {
+    fn try_from(value: &str) -> Result<Self, Self::Error> {
+        let value = value.replace('[', "").replace(']', "");
+        let value = value.split(',').map(|x| x.trim()).collect::<Vec<&str>>();
         let mut index = 0;
         let mut temp = VecDeque::new();
         let mut root: Option<Rc<RefCell<TreeNode>>> = None;
+
+        if value.is_empty() {
+            return Err(Box::new(TreeNodeError::new()));
+        }
 
         loop {
             if root.is_none() {
@@ -116,6 +125,10 @@ impl TryFrom<Vec<&str>> for TreeNode {
                 root = Some(Rc::clone(&val));
                 temp.push_front(Some(val));
                 continue;
+            }
+
+            if index < value.len() && temp.is_empty() {
+                return Err(Box::new(TreeNodeError::new()));
             }
 
             if index + 1 >= value.len() {
@@ -152,21 +165,73 @@ impl TryFrom<Vec<&str>> for TreeNode {
 #[cfg(test)]
 mod test {
     use super::TreeNode;
+    use std::cell::RefCell;
+    use std::rc::Rc;
 
     #[test]
-    fn test() {
-        let root = TreeNode::try_from(vec![
-            "5", "4", "8", "11", "null", "13", "4", "7", "2", "null", "null", "null", "1",
-        ])
-        .unwrap();
+    fn test_valid_array() {
+        let root = TreeNode::try_from("[5,4,8,11,null,13,4,7,2,null,null,null,1]").unwrap();
+        let mut test = TreeNode::new(5);
+        test.left = Some(Rc::new(RefCell::new(TreeNode::new(4))));
+        test.right = Some(Rc::new(RefCell::new(TreeNode::new(8))));
+        if let Some(node) = test.left.as_ref() {
+            node.borrow_mut().left = Some(Rc::new(RefCell::new(TreeNode::new(11))));
+            if let Some(node) = node.borrow_mut().left.as_ref() {
+                node.borrow_mut().left = Some(Rc::new(RefCell::new(TreeNode::new(7))));
+                node.borrow_mut().right = Some(Rc::new(RefCell::new(TreeNode::new(2))));
+            }
+        }
+        if let Some(node) = test.right.as_ref() {
+            node.borrow_mut().left = Some(Rc::new(RefCell::new(TreeNode::new(13))));
+            node.borrow_mut().right = Some(Rc::new(RefCell::new(TreeNode::new(4))));
+            if let Some(node) = node.borrow_mut().right.as_ref() {
+                node.borrow_mut().right = Some(Rc::new(RefCell::new(TreeNode::new(1))));
+            }
+        }
+        assert_eq!(root, test);
+    }
+
+    #[test]
+    fn test_valid_array2() {
+        let root = TreeNode::try_from("[3,9,20,null,null,15,7]").unwrap();
+        let mut test = TreeNode::new(3);
+        test.left = Some(Rc::new(RefCell::new(TreeNode::new(9))));
+        test.right = Some(Rc::new(RefCell::new(TreeNode::new(20))));
+        if let Some(node) = test.right.as_ref() {
+            node.borrow_mut().left = Some(Rc::new(RefCell::new(TreeNode::new(15))));
+            node.borrow_mut().right = Some(Rc::new(RefCell::new(TreeNode::new(7))));
+        }
+        assert_eq!(root, test);
+    }
+
+    #[test]
+    fn test_valid_array3() {
+        let root = TreeNode::try_from("[3, 9, 20, null, null, 15, 7]").unwrap();
+        let mut test = TreeNode::new(3);
+        test.left = Some(Rc::new(RefCell::new(TreeNode::new(9))));
+        test.right = Some(Rc::new(RefCell::new(TreeNode::new(20))));
+        if let Some(node) = test.right.as_ref() {
+            node.borrow_mut().left = Some(Rc::new(RefCell::new(TreeNode::new(15))));
+            node.borrow_mut().right = Some(Rc::new(RefCell::new(TreeNode::new(7))));
+        }
+        assert_eq!(root, test);
     }
 
     #[test]
     #[should_panic]
     fn test_invalid_array() {
-        let root = TreeNode::try_from(vec![
-            "5", "4", "8", "11", "null", "13", "4", "7", "2", "null", "null", "null", "1",
-        ])
-        .unwrap();
+        TreeNode::try_from("[1,2,null,null,null,1]").unwrap();
+    }
+
+    #[test]
+    #[should_panic]
+    fn test_invalid_array2() {
+        TreeNode::try_from("[null]").unwrap();
+    }
+
+    #[test]
+    #[should_panic]
+    fn test_invalid_array3() {
+        TreeNode::try_from("").unwrap();
     }
 }
