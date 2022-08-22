@@ -8,5 +8,5 @@ mod leetcode;
 // use codeforces::gym::*;
 
 fn main() {
-    leetcode::construct_binary_tree_from_preorder_and_inorder_traversal::run();
+    leetcode::lowest_common_ancestor_of_a_binary_tree::run();
 }

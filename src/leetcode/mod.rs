@@ -23,6 +23,8 @@ pub mod intersection_of_two_arrays_ii;
 pub mod isomorphic_strings;
 pub mod jewels_and_stones;
 pub mod longest_substring_without_repeating_characters;
+/// [Lowest Common Ancestor of a Binary Tree](https://leetcode.com/explore/learn/card/data-structure-tree/133/conclusion/932/)
+pub mod lowest_common_ancestor_of_a_binary_tree;
 pub mod maximum_depth_of_binary_tree;
 pub mod merge_sorted_array;
 pub mod merge_two_sorted_lists;
