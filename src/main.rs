@@ -8,5 +8,5 @@ mod leetcode;
 // use codeforces::gym::*;
 
 fn main() {
-    leetcode::lowest_common_ancestor_of_a_binary_tree::run();
+    aoj::alds1_11_a::run();
 }
